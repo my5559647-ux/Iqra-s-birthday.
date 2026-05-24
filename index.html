@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday Iqra</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        body { margin: 0; background-color: #ffd1dc; font-family: sans-serif; text-align: center; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .step { display: none; width: 100%; }
+        .active { display: block; }
+        button { padding: 15px 30px; font-size: 18px; cursor: pointer; background: #e64980; color: white; border: none; border-radius: 25px; margin: 10px; }
+        img { width: 300px; border-radius: 20px; border: 5px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .card { background: white; padding: 40px; border-radius: 20px; width: 85%; max-width: 450px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin: auto; }
+    </style>
+</head>
+<body>
+
+    <div id="step1" class="step active"> <h1 id="count" style="font-size: 80px; color: #d6336c;">3</h1> </div>
+
+    <div id="step2" class="step">
+        <h1>Happy Birthday Iqra! 🎂</h1>
+        <p>Are you ready?</p>
+        <button onclick="triggerFlowers(); showStep(3)">Let's Celebrate</button>
+    </div>
+
+    <div id="step3" class="step">
+        <h1>It's Your Special Day! ✨</h1>
+        <button onclick="showStep(4)">Next</button>
+    </div>
+
+    <div id="step4" class="step">
+        <h1>Do you wanna see what I made??</h1>
+        <button onclick="showStep(5)">Yes!</button>
+        <button onclick="alert('You have to click Yes! 😉')">No</button>
+    </div>
+
+    <div id="step5" class="step">
+        <h1>................. 🤔</h1>
+        <p>Think, what could the surprise be?</p>
+        <button onclick="showStep(6)">Turn On the Lights</button>
+    </div>
+
+    <div id="step6" class="step">
+        <h1 style="color: #d6336c;">Ten Tenan!!! 🎉🎉🎉🎉</h1>
+        <img src="bracelet.png" alt="Gift">
+        <p style="max-width: 400px; margin: 20px auto; font-style: italic;">
+            "I was confused about what to get you, but I hope this bracelet strengthens our bond. Now don't be too much shokhi😂😂😂😂"
+        </p>
+        <button onclick="triggerFlowers(); showStep(7)">Next</button>
+    </div>
+
+    <div id="step7" class="step">
+        <div class="card">
+            <h2>Special Wishes for You ✨</h2>
+            <p>May Allah bless your future, grant you all the happiness and success in the world. May our bond remain strong forever, and may all your prayers be answered. Ameen.</p>
+            <hr>
+            <h1 style="color: #e64980;">Happy Birthday Iqra! 🎂</h1>
+            <p>Cake, chocolates, and lots of love from Ismab!</p>
+        </div>
+    </div>
+
+    <script>
+        let count = 3;
+        let cElement = document.getElementById('count');
+        let timer = setInterval(() => {
+            count--;
+            if(count > 0) cElement.innerText = count;
+            else { clearInterval(timer); showStep(2); triggerFlowers(); }
+        }, 1000);
+
+        function triggerFlowers() {
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+        }
+
+        function showStep(stepNum) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + stepNum).classList.add('active');
+        }
+    </script>
+</body>
+</html>
